@@ -16,3 +16,4 @@ class HelloWorldEquipment(Resource):
         return {'hello': 'world equipment'}
 
 api_equipment.add_resource(HelloWorldEquipment, '/')
+# ddssaf
