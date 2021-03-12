@@ -1,2 +1,4 @@
 /venv
 .idea/misc.xml
+/dao/settings.py
+.idea/MeetAtCourt.iml
