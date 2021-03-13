@@ -19,17 +19,12 @@ def db_disconnect(connection):
     connection.close()
 
 
-# select_query是sql语句
-# 返回的result是个二维数组
-# 包装了数据库连接断开的操作，调用时只考虑sql语句即可
-# result的第一维对应数据库中每一行 第二维对应每一列
-# 例如，搜索到的结果有30个数据，那么len(result)=30
-# 每个数据（每一行）有5个字段，那么len(result[0])=5
-def select_query_better(select_query):
-    connection = db_connect()
-    cursor = connection.cursor()
-    cursor.execute(select_query)
-    result = cursor.fetchall()
-    cursor.close()
-    db_disconnect(connection)
-    return result
+# 该装饰器向被装饰的函数提供一个参数cursor，被装饰参数需要声明该参数并可以直接使用
+def need_db(func):
+    def wrapper(**kwargs):
+        connection = db_connect()
+        cursor = connection.cursor()
+        func(cursor, **kwargs)
+        cursor.close()
+        connection.close()
+    return wrapper
