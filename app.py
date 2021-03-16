@@ -4,11 +4,11 @@ from flask_restful import Api, Resource
 
 from biz.equipment import equipment
 from biz.yueqiu import yueqiu
-from biz.user import user
+from biz.member import member
 
 app = Flask(__name__)
 app.register_blueprint(yueqiu, url_prefix="/yueqiu")
-app.register_blueprint(user, url_prefix="/user")
+app.register_blueprint(member, url_prefix="/member")
 app.register_blueprint(equipment, url_prefix="/equipment")
 
 api = Api(app)
