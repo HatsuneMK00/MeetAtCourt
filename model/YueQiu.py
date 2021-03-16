@@ -12,6 +12,16 @@ class YueQiu:
         self.have_ball = have_ball
         self.yueqiu_note = yueqiu_note
 
+    def __repr__(self):
+        return {
+            'yueqiu_id': self.yueqiu_id,
+            'yueqiu_time': self.yueqiu_time,
+            'yueqiu_location': self.yueqiu_location,
+            'member_id': self.member_id,
+            'have_ball': self.have_ball,
+            'yueqiu_note': self.yueqiu_note
+        }.__str__()
+
 
 resource_field_yueqiu = {
     'yueqiu_id': fields.Integer,
@@ -19,5 +29,5 @@ resource_field_yueqiu = {
     'yueqiu_location': fields.String,
     'member_id': fields.Integer,
     'have_ball': fields.Integer,
-    'yueqiu_note': fields.String,
+    'yueqiu_note': fields.String
 }
