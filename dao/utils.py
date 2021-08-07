@@ -24,7 +24,8 @@ def need_db(func):
     def wrapper(**kwargs):
         connection = db_connect()
         cursor = connection.cursor()
-        func(cursor, **kwargs)
+        exec_result = func(cursor, **kwargs)
         cursor.close()
         connection.close()
+        return exec_result
     return wrapper
